@@ -1,10 +1,16 @@
-import { comment } from "postcss";
+// import { comment } from "postcss";
 import { comments } from "../data";
-
+import { redirect } from "next/navigation";
+// import { redirect } from "next/dist/server/api-utils";
 
 export async function GET(request: Request
     , { params }: { params: { id: string } } // conatin the URL parameter
 ) {
+    if(parseInt(params.id)>comments.length){
+        redirect("/comments")
+    }
+
+
     // Find the comment with the specified ID
     const comment = comments.find(
         (comment) => comment.id == parseInt(params.id)
