@@ -9,8 +9,6 @@ export async function GET(request: Request
     if(parseInt(params.id)>comments.length){
         redirect("/comments")
     }
-
-
     // Find the comment with the specified ID
     const comment = comments.find(
         (comment) => comment.id == parseInt(params.id)
